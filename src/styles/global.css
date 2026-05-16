@@ -527,7 +527,33 @@ a { text-decoration: none; color: inherit; }
 @media (max-width: 880px) {
   .footer-grid { grid-template-columns: 1fr 1fr; }
 }
-.footer-brand img { height: 88px; }
+.footer-logo-mark {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+.footer-logo-mark img { height: 48px; width: 48px; flex-shrink: 0; }
+.footer-logo-text {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+.footer-logo-name {
+  font-family: var(--font-sans);
+  font-size: 22px;
+  font-weight: 700;
+  letter-spacing: .08em;
+  color: #fff;
+  line-height: 1;
+}
+.footer-logo-sub {
+  font-family: var(--font-sans);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: .32em;
+  text-transform: uppercase;
+  color: var(--bk-gold-400);
+}
 .footer-tag {
   font-family: var(--font-sans);
   font-size: 14px;
