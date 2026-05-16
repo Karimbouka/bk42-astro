@@ -19,12 +19,11 @@ const items: { key: keyof Translation['routes']; label: string }[] = [
   { key: 'about',    label: t.navAbout },
   { key: 'contact',  label: t.navContact },
 ];
-const logo = dark ? '/images/logo/bk42-light.png' : '/images/logo/bk42-dark.png';
 ---
 <nav class={`nav ${dark ? 'dark' : 'light'}`}>
   <div class="container nav-inner">
     <a href={localizedPath(locale, 'home')} class="nav-logo" aria-label="BK42 — Accueil">
-      <img src={logo} alt="BK42" width="48" height="48" />
+      <img src="/images/logo/bk42-icon-only.svg" alt="BK42" width="48" height="48" />
     </a>
     <div class="nav-links">
       {items.map((it) => (

@@ -270,11 +270,6 @@ a { text-decoration: none; color: inherit; }
   text-align: center;
   padding: 0 24px;
 }
-.hero-logo {
-  height: 200px;
-  margin-bottom: 18px;
-  filter: drop-shadow(0 8px 24px rgba(0,0,0,.6));
-}
 .hero-tagline {
   font-family: var(--font-sans);
   font-size: 11px;
