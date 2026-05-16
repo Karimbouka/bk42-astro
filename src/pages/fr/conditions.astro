@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import { translations } from '../../i18n';
+const locale = 'fr' as const;
+const t = translations[locale];
+---
+<BaseLayout
+  locale={locale}
+  pageKey="conditions"
+  title={t.seo.conditions.title}
+  description={t.seo.conditions.description}
+>
+  <LegalPage
+    locale={locale}
+    eyebrow={t.conditionsEyebrow}
+    headline={t.conditionsHeadline}
+    sub={t.conditionsSub}
+    back={t.conditionsBack}
+    sections={t.conditionsSections}
+  />
+</BaseLayout>

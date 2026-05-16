@@ -1,0 +1,202 @@
+---
+import { translations, localizedPath } from '../i18n';
+import { fleet, PICKUP_CITIES, PICKUP_AIRPORTS } from '../data/fleet';
+import type { Locale } from '../i18n';
+
+export interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = translations[locale];
+
+const timeSlots: string[] = [];
+for (let h = 8; h <= 22; h++) {
+  timeSlots.push(`${String(h).padStart(2, '0')}:00`);
+  if (h < 22) timeSlots.push(`${String(h).padStart(2, '0')}:30`);
+}
+
+// Default car shown server-side (first in list). Client JS picks ?car= when present.
+const defaultCar = fleet[0]!;
+const colorLabel = defaultCar.colorLabel[locale];
+---
+<section class="section section-light" style="padding:48px 0 112px;">
+  <div class="container">
+    <a href={localizedPath(locale, 'fleet')} style="font-family:var(--font-sans); font-size:12px; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-3);">{t.bookBack}</a>
+
+    <div class="booking-grid">
+      <div>
+        <p class="eyebrow">{t.bookEyebrow}</p>
+        <h1 class="h1" style="font-size:clamp(36px, 4.5vw, 56px);">{t.bookHeadline}</h1>
+
+        <form id="booking-form" novalidate>
+          <input type="hidden" name="carId" value={defaultCar.id} />
+
+          <fieldset class="form-block" style="border:0;">
+            <legend class="form-block-title">{t.bookPickup}</legend>
+            <div class="form-row">
+              <div class="field full">
+                <label for="pickupLoc">{t.bookPickupLoc}</label>
+                <select id="pickupLoc" name="pickupLoc">
+                  <optgroup label={t.pickupCity}>
+                    {PICKUP_CITIES.map((c) => <option value={c}>{c}</option>)}
+                  </optgroup>
+                  <optgroup label={t.pickupAirports}>
+                    {PICKUP_AIRPORTS.map((c) => <option value={c}>{c}</option>)}
+                  </optgroup>
+                </select>
+              </div>
+              <div class="field">
+                <label for="pickupDate">{t.bookDate}</label>
+                <input id="pickupDate" name="pickupDate" type="date" />
+              </div>
+              <div class="field">
+                <label for="pickupTime">{t.bookTime}</label>
+                <select id="pickupTime" name="pickupTime">
+                  {timeSlots.map((s) => <option value={s} selected={s === '10:00'}>{s}</option>)}
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <fieldset class="form-block" style="border:0;">
+            <legend class="form-block-title">{t.bookReturn}</legend>
+            <div class="form-row">
+              <div class="field full">
+                <label for="returnLoc">{t.bookReturnLoc}</label>
+                <select id="returnLoc" name="returnLoc">
+                  <optgroup label={t.pickupCity}>
+                    {PICKUP_CITIES.map((c) => <option value={c}>{c}</option>)}
+                  </optgroup>
+                  <optgroup label={t.pickupAirports}>
+                    {PICKUP_AIRPORTS.map((c) => <option value={c}>{c}</option>)}
+                  </optgroup>
+                </select>
+              </div>
+              <div class="field">
+                <label for="returnDate">{t.bookDate}</label>
+                <input id="returnDate" name="returnDate" type="date" />
+              </div>
+              <div class="field">
+                <label for="returnTime">{t.bookTime}</label>
+                <select id="returnTime" name="returnTime">
+                  {timeSlots.map((s) => <option value={s} selected={s === '10:00'}>{s}</option>)}
+                </select>
+              </div>
+            </div>
+          </fieldset>
+        </form>
+      </div>
+
+      <aside>
+        <div class="summary-card">
+          <div class="summary-img">
+            <img id="sum-img" src={`/images/cars/${defaultCar.img}`} alt={defaultCar.alt[locale]} />
+          </div>
+          <div class="fleet-card-cat" id="sum-cat">{(defaultCar.catKey === 'eco' ? t.catEco : defaultCar.catKey === 'city' ? t.catCity : t.catSuv)}, {colorLabel}</div>
+          <h2 class="fleet-card-model" id="sum-model" style="font-size:22px; margin:6px 0 20px;">{defaultCar.model} {defaultCar.year}</h2>
+          <div class="summary-row"><span>{t.bookDailyRate}</span><span id="sum-rate">{defaultCar.price} MAD</span></div>
+          <div class="summary-row"><span>{t.bookDuration}</span><span id="sum-duration">1 {t.bookDay1}</span></div>
+          <div class="summary-row"><span>{t.bookInsurance}</span><span>{t.bookIncluded}</span></div>
+          <div class="summary-row"><span>{t.bookDelivery}</span><span>{t.bookIncluded}</span></div>
+          <div style="height:1px; background:var(--border-1); margin:14px 0;"></div>
+          <div style="display:flex; justify-content:space-between; align-items:baseline; margin-bottom:20px;">
+            <span style="font-family:var(--font-sans); font-size:12px; font-weight:600; letter-spacing:.12em; text-transform:uppercase; color:var(--fg-2);">{t.bookTotal}</span>
+            <span id="sum-total" style="font-family:var(--font-mono); font-weight:500; font-size:26px; color:var(--bk-ink-900);">{defaultCar.price} MAD</span>
+          </div>
+          <button type="button" id="wa-book" class="btn btn-primary btn-lg btn-full">{t.bookWhatsApp}</button>
+          <p style="text-align:center; margin-top:14px; font-family:var(--font-sans); font-size:11px; color:var(--fg-3); letter-spacing:.04em;">{t.bookNote}</p>
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<script is:inline define:vars={{
+  fleetData: fleet,
+  locale,
+  t: {
+    catEco: t.catEco, catCity: t.catCity, catSuv: t.catSuv,
+    bookDay1: t.bookDay1, bookDayN: t.bookDayN,
+    waGreeting: locale === 'fr' ? 'Bonjour BK42,' : 'Hello BK42,',
+    waWishFr: 'Je souhaite réserver la voiture suivante : ',
+    waWishEn: 'I would like to book: ',
+    waPickup: locale === 'fr' ? 'Lieu de prise en charge : ' : 'Pickup location: ',
+    waPickupDt: locale === 'fr' ? 'Date et heure de prise en charge : ' : 'Pickup date and time: ',
+    waReturnDt: locale === 'fr' ? 'Date et heure de retour : ' : 'Return date and time: ',
+    waDuration: locale === 'fr' ? 'Durée : ' : 'Duration: ',
+    waTotal: locale === 'fr' ? 'Prix total : ' : 'Total price: ',
+    waThanks: locale === 'fr' ? 'Merci.' : 'Thank you.',
+    dateLocale: t.dateLocale,
+  },
+}}>
+  (function() {
+    var params = new URLSearchParams(location.search);
+    var carId = params.get('car');
+    var car = fleetData.find(function(c){ return c.id === carId; }) || fleetData[0];
+
+    var byId = function(id){ return document.getElementById(id); };
+    var carIdInput = document.querySelector('input[name="carId"]');
+    if (carIdInput) carIdInput.value = car.id;
+
+    byId('sum-img').src = '/images/cars/' + car.img;
+    byId('sum-img').alt = car.alt[locale];
+    var catLabel = car.catKey === 'eco' ? t.catEco : car.catKey === 'city' ? t.catCity : t.catSuv;
+    byId('sum-cat').textContent = catLabel + ', ' + car.colorLabel[locale];
+    byId('sum-model').textContent = car.model + ' ' + car.year;
+    byId('sum-rate').textContent = car.price + ' MAD';
+
+    var today = new Date(); today.setHours(0,0,0,0);
+    var pad = function(n){ return String(n).padStart(2,'0'); };
+    var iso = function(d){ return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate()); };
+    var tomorrow = new Date(today); tomorrow.setDate(today.getDate()+1);
+    var dayAfter = new Date(tomorrow); dayAfter.setDate(tomorrow.getDate()+1);
+    byId('pickupDate').min = iso(today);
+    byId('pickupDate').value = iso(tomorrow);
+    byId('returnDate').min = iso(tomorrow);
+    byId('returnDate').value = iso(dayAfter);
+
+    function recompute(){
+      var pd = new Date(byId('pickupDate').value + 'T00:00:00');
+      var rd = new Date(byId('returnDate').value + 'T00:00:00');
+      var ms = 1000*60*60*24;
+      var days = Math.round((rd - pd) / ms);
+      if (!days || days < 1) days = 1;
+      byId('sum-duration').textContent = days + ' ' + (days > 1 ? t.bookDayN : t.bookDay1);
+      byId('sum-total').textContent = (car.price * days).toLocaleString(t.dateLocale).replace(/ /g,' ') + ' MAD';
+      return days;
+    }
+    byId('pickupDate').addEventListener('change', function(){
+      var pd = new Date(byId('pickupDate').value + 'T00:00:00');
+      var rd = new Date(byId('returnDate').value + 'T00:00:00');
+      if (rd <= pd) {
+        var nr = new Date(pd); nr.setDate(pd.getDate()+1);
+        byId('returnDate').value = iso(nr);
+      }
+      byId('returnDate').min = byId('pickupDate').value;
+      recompute();
+    });
+    byId('returnDate').addEventListener('change', recompute);
+    recompute();
+
+    byId('wa-book').addEventListener('click', function(){
+      var days = recompute();
+      var pickupLoc = byId('pickupLoc').value;
+      var pd = new Date(byId('pickupDate').value + 'T00:00:00');
+      var rd = new Date(byId('returnDate').value + 'T00:00:00');
+      var fmt = function(d){ return d.toLocaleDateString(t.dateLocale, {day:'numeric',month:'long',year:'numeric'}); };
+      var price = (car.price * days).toLocaleString(t.dateLocale).replace(/ /g,' ');
+      var pickupTime = byId('pickupTime').value;
+      var returnTime = byId('returnTime').value;
+      var lines = [
+        t.waGreeting, '',
+        (locale === 'fr' ? t.waWishFr : t.waWishEn) + car.model + ' ' + car.year + ' (' + car.colorLabel[locale] + ').',
+        t.waPickup + pickupLoc + '.',
+        t.waPickupDt + fmt(pd) + ', ' + pickupTime + '.',
+        t.waReturnDt + fmt(rd) + ', ' + returnTime + '.',
+        t.waDuration + days + ' ' + (days > 1 ? t.bookDayN : t.bookDay1) + '.',
+        t.waTotal + price + ' MAD.', '',
+        t.waThanks
+      ];
+      var url = 'https://wa.me/212706401827?text=' + encodeURIComponent(lines.join('\n'));
+      window.open(url, '_blank', 'noopener,noreferrer');
+    });
+  })();
+</script>

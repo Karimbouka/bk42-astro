@@ -1,0 +1,39 @@
+---
+import { translations, localizedPath } from '../i18n';
+import type { Locale, Translation } from '../i18n';
+import type { LegalSection } from '../i18n/types';
+
+export interface Props {
+  locale: Locale;
+  eyebrow: string;
+  headline: string;
+  sub: string;
+  back: string;
+  sections: LegalSection[];
+}
+
+const { locale, eyebrow, headline, sub, back, sections } = Astro.props;
+---
+<section class="section section-light" style="padding:72px 0 112px;">
+  <div class="container" style="max-width:880px;">
+    <p class="eyebrow">{eyebrow}</p>
+    <h1 class="h1" style="font-size:clamp(36px, 5vw, 56px);">{headline}</h1>
+    <p class="lead" style="max-width:60ch; margin-bottom:48px;">{sub}</p>
+
+    {sections.map((s) => (
+      <section class="legal-section">
+        <h2>{s.title}</h2>
+        <p>{s.body}</p>
+        {s.items && (
+          <ul>
+            {s.items.map((it) => <li>{it}</li>)}
+          </ul>
+        )}
+      </section>
+    ))}
+
+    <div style="margin-top:16px;">
+      <a href={localizedPath(locale, 'home')} class="btn btn-secondary">{back}</a>
+    </div>
+  </div>
+</section>

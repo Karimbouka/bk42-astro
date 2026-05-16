@@ -1,0 +1,64 @@
+---
+import { translations } from '../i18n';
+import type { Locale } from '../i18n';
+
+export interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = translations[locale];
+---
+<section class="section section-light" style="padding:96px 0 112px;">
+  <div class="container" style="max-width:1000px;">
+    <p class="eyebrow">{t.contactEyebrow}</p>
+    <h1 class="h1" style="font-size:clamp(40px, 5vw, 64px);">{t.contactHeadline}</h1>
+    <p class="lead" style="margin-bottom:56px;">{t.contactSub}</p>
+
+    <div class="two-col">
+      <form action={`mailto:bk42rentcars@gmail.com`} method="post" enctype="text/plain" style="display:flex; flex-direction:column; gap:18px;">
+        <div class="field full">
+          <label for="c-name">{t.contactName}</label>
+          <input id="c-name" name="name" required placeholder={t.contactNamePh} />
+        </div>
+        <div class="field full">
+          <label for="c-email">{t.contactEmail}</label>
+          <input id="c-email" name="email" type="email" required placeholder={t.contactEmailPh} />
+        </div>
+        <div class="field full">
+          <label for="c-phone">{t.contactPhone}</label>
+          <input id="c-phone" name="phone" type="tel" placeholder={t.contactPhonePh} />
+        </div>
+        <div class="field full">
+          <label for="c-msg">{t.contactMessage}</label>
+          <textarea id="c-msg" name="message" rows="5" placeholder={t.contactMessagePh}></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-lg" style="align-self:flex-start;">{t.contactSend} →</button>
+      </form>
+
+      <div style="padding-top:24px; border-top:1px solid var(--border-1);">
+        <div class="info-block">
+          <div class="info-label">{t.contactPhoneLabel}</div>
+          <div class="info-value"><a href="tel:+212706401827">+212 7 06 40 18 27</a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">{t.contactEmail}</div>
+          <div class="info-value"><a href="mailto:bk42rentcars@gmail.com">bk42rentcars@gmail.com</a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">{t.contactWhatsApp}</div>
+          <div class="info-value"><a href="https://wa.me/212706401827" rel="noopener noreferrer" target="_blank">+212 7 06 40 18 27</a></div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">{t.contactOffice}</div>
+          <div class="info-value">{t.contactOfficeVal}</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">{t.contactOffice2}</div>
+          <div class="info-value">{t.contactOfficeVal2}</div>
+        </div>
+        <div class="info-block">
+          <div class="info-label">{t.contactHours}</div>
+          <div class="info-value">{t.contactHoursVal}</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

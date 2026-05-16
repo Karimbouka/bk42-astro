@@ -1,0 +1,16 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import HomePage from '../../components/HomePage.astro';
+import { translations } from '../../i18n';
+const locale = 'en' as const;
+const t = translations[locale];
+---
+<BaseLayout
+  locale={locale}
+  pageKey="home"
+  title={t.seo.home.title}
+  description={t.seo.home.description}
+  dark={true}
+>
+  <HomePage locale={locale} />
+</BaseLayout>

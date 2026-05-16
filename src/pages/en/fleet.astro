@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import FleetPage from '../../components/FleetPage.astro';
+import { translations } from '../../i18n';
+const locale = 'en' as const;
+const t = translations[locale];
+---
+<BaseLayout
+  locale={locale}
+  pageKey="fleet"
+  title={t.seo.fleet.title}
+  description={t.seo.fleet.description}
+>
+  <FleetPage locale={locale} />
+</BaseLayout>

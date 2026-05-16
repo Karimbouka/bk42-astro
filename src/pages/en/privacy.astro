@@ -1,0 +1,22 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import LegalPage from '../../components/LegalPage.astro';
+import { translations } from '../../i18n';
+const locale = 'en' as const;
+const t = translations[locale];
+---
+<BaseLayout
+  locale={locale}
+  pageKey="privacy"
+  title={t.seo.privacy.title}
+  description={t.seo.privacy.description}
+>
+  <LegalPage
+    locale={locale}
+    eyebrow={t.privacyEyebrow}
+    headline={t.privacyHeadline}
+    sub={t.privacySub}
+    back={t.privacyBack}
+    sections={t.privacySections}
+  />
+</BaseLayout>

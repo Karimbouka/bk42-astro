@@ -1,0 +1,53 @@
+---
+import FleetCard from './FleetCard.astro';
+import { translations } from '../i18n';
+import { fleet } from '../data/fleet';
+import type { Locale } from '../i18n';
+
+export interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = translations[locale];
+
+const cats = [
+  { key: 'all', label: t.catAll },
+  { key: 'eco', label: t.catEco },
+  { key: 'city', label: t.catCity },
+  { key: 'suv', label: t.catSuv },
+];
+---
+<section class="section section-light" style="padding:72px 0 112px;">
+  <div class="container">
+    <p class="eyebrow">{t.fleetEyebrow}</p>
+    <h1 class="h1">{t.fleetHeadline}</h1>
+    <p class="lead">{t.fleetSub}</p>
+
+    <div class="chips" id="fleet-filter">
+      {cats.map((c) => (
+        <button class={`chip ${c.key === 'all' ? 'active' : ''}`} data-cat={c.key} type="button">{c.label}</button>
+      ))}
+    </div>
+
+    <div class="fleet-grid" id="fleet-list">
+      {fleet.map((car) => (
+        <div data-cat={car.catKey}>
+          <FleetCard car={car} locale={locale} />
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  // Progressive enhancement: filter chips. Content stays in DOM either way.
+  const buttons = document.querySelectorAll<HTMLButtonElement>('#fleet-filter .chip');
+  const items = document.querySelectorAll<HTMLElement>('#fleet-list > [data-cat]');
+  buttons.forEach((b) =>
+    b.addEventListener('click', () => {
+      buttons.forEach((x) => x.classList.toggle('active', x === b));
+      const cat = b.dataset.cat;
+      items.forEach((it) => {
+        it.style.display = cat === 'all' || it.dataset.cat === cat ? '' : 'none';
+      });
+    })
+  );
+</script>

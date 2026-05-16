@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ContactPage from '../../components/ContactPage.astro';
+import { translations } from '../../i18n';
+const locale = 'fr' as const;
+const t = translations[locale];
+---
+<BaseLayout
+  locale={locale}
+  pageKey="contact"
+  title={t.seo.contact.title}
+  description={t.seo.contact.description}
+>
+  <ContactPage locale={locale} />
+</BaseLayout>

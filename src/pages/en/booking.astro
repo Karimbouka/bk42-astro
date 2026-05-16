@@ -1,0 +1,15 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookingPage from '../../components/BookingPage.astro';
+import { translations } from '../../i18n';
+const locale = 'en' as const;
+const t = translations[locale];
+---
+<BaseLayout
+  locale={locale}
+  pageKey="booking"
+  title={t.seo.booking.title}
+  description={t.seo.booking.description}
+>
+  <BookingPage locale={locale} />
+</BaseLayout>

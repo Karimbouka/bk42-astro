@@ -1,0 +1,44 @@
+---
+import { translations, localizedPath } from '../i18n';
+import type { Locale } from '../i18n';
+
+export interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = translations[locale];
+---
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <img src="/images/logo/bk42-light.png" alt="BK42" width="200" height="88" />
+        <p class="footer-tag">{t.footerTagline}</p>
+      </div>
+      <div class="footer-col">
+        <div class="footer-label">{t.footerCompany}</div>
+        <a href={localizedPath(locale, 'about')} class="footer-link">{t.footerAbout}</a>
+        <a href={localizedPath(locale, 'fleet')} class="footer-link">{t.footerFleet}</a>
+        <a href={localizedPath(locale, 'contact')} class="footer-link">{t.footerContact}</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-label">{t.footerOffices}</div>
+        <span class="footer-link">Larache</span>
+        <span class="footer-link">Tanger</span>
+      </div>
+      <div class="footer-col">
+        <div class="footer-label">{t.footerContact}</div>
+        <a href="tel:+212706401827" class="footer-link">+212 7 06 40 18 27</a>
+        <a href="mailto:bk42rentcars@gmail.com" class="footer-link">bk42rentcars@gmail.com</a>
+        <span class="footer-link">Larache, Maroc</span>
+        <a href="https://www.instagram.com/bk42_location_auto/" rel="noopener noreferrer" target="_blank" class="footer-link">Instagram</a>
+        <a href="https://wa.me/212706401827" rel="noopener noreferrer" target="_blank" class="footer-link">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>{t.footerCopyright}</span>
+      <span style="display:flex;gap:24px;">
+        <a href={localizedPath(locale, 'conditions')} class="footer-link">{t.footerConditions}</a>
+        <a href={localizedPath(locale, 'privacy')} class="footer-link">{t.footerPrivacy}</a>
+      </span>
+    </div>
+  </div>
+</footer>

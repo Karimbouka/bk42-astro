@@ -1,0 +1,53 @@
+---
+import { translations, localizedPath, otherLocale } from '../i18n';
+import type { Locale, Translation } from '../i18n';
+
+export interface Props {
+  locale: Locale;
+  pageKey: keyof Translation['routes'];
+  dark?: boolean;
+}
+
+const { locale, pageKey, dark = false } = Astro.props;
+const t = translations[locale];
+const altLocale = otherLocale(locale);
+
+const items: { key: keyof Translation['routes']; label: string }[] = [
+  { key: 'home',     label: t.navHome },
+  { key: 'fleet',    label: t.navFleet },
+  { key: 'booking',  label: t.navBooking },
+  { key: 'about',    label: t.navAbout },
+  { key: 'contact',  label: t.navContact },
+];
+const logo = dark ? '/images/logo/bk42-light.png' : '/images/logo/bk42-dark.png';
+---
+<nav class={`nav ${dark ? 'dark' : 'light'}`}>
+  <div class="container nav-inner">
+    <a href={localizedPath(locale, 'home')} class="nav-logo" aria-label="BK42 — Accueil">
+      <img src={logo} alt="BK42" width="48" height="48" />
+    </a>
+    <div class="nav-links">
+      {items.map((it) => (
+        <a
+          href={localizedPath(locale, it.key)}
+          class={`nav-link ${it.key === pageKey ? 'active' : ''}`}
+        >{it.label}</a>
+      ))}
+    </div>
+    <div class="nav-actions">
+      <div class="lang-switch" role="group" aria-label="Language">
+        <a
+          href={localizedPath('fr', pageKey)}
+          class={`lang-link ${locale === 'fr' ? 'active' : ''}`}
+          hreflang="fr-FR"
+        >FR</a>
+        <a
+          href={localizedPath('en', pageKey)}
+          class={`lang-link ${locale === 'en' ? 'active' : ''}`}
+          hreflang="en-GB"
+        >EN</a>
+      </div>
+      <a href={localizedPath(locale, 'booking')} class="btn btn-primary btn-sm">{t.navBook}</a>
+    </div>
+  </div>
+</nav>

@@ -1,0 +1,48 @@
+---
+import { translations, localizedPath } from '../i18n';
+import type { Locale } from '../i18n';
+import type { Car } from '../data/fleet';
+
+export interface Props {
+  car: Car;
+  locale: Locale;
+}
+
+const { car, locale } = Astro.props;
+const t = translations[locale];
+const isLight = car.color === 'Blanc';
+const catLabel =
+  car.catKey === 'eco' ? t.catEco :
+  car.catKey === 'city' ? t.catCity :
+  t.catSuv;
+const colorLabel = car.colorLabel[locale];
+const gear = car.gear[locale];
+const fuel = car.fuel[locale];
+---
+<article class="fleet-card">
+  <a href={`${localizedPath(locale, 'booking')}?car=${car.id}`} style="display:block;color:inherit;">
+    <div class="fleet-card-img">
+      <img src={`/images/cars/${car.img}`} alt={car.alt[locale]} width="640" height="440" loading="lazy" />
+      <span class={`fleet-card-color ${isLight ? 'light' : ''}`}>{colorLabel}</span>
+      <span class={`fleet-card-year ${isLight ? 'light' : ''}`}>{car.year}</span>
+    </div>
+    <div class="fleet-card-body">
+      <div class="fleet-card-cat">{catLabel}</div>
+      <h3 class="fleet-card-model">{car.model}</h3>
+      <div class="fleet-card-meta">
+        <span>{car.seats} {t.cardSeats}</span>
+        <span class="dot"></span>
+        <span>{gear}</span>
+        <span class="dot"></span>
+        <span>{fuel}</span>
+      </div>
+      <div class="fleet-card-foot">
+        <div>
+          <span class="fleet-card-price">{car.price} MAD</span>
+          <span class="fleet-card-period">{t.cardDay}</span>
+        </div>
+        <span class="fleet-card-cta">{t.cardBook}</span>
+      </div>
+    </div>
+  </a>
+</article>
