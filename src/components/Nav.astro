@@ -46,7 +46,44 @@ const items: { key: keyof Translation['routes']; label: string }[] = [
           hreflang="en-GB"
         >EN</a>
       </div>
-      <a href={localizedPath(locale, 'booking')} class="btn btn-primary btn-sm">{t.navBook}</a>
+      <a href={localizedPath(locale, 'booking')} class="btn btn-primary btn-sm nav-reserve">{t.navBook}</a>
+      <button
+        type="button"
+        class="nav-toggle"
+        aria-label="Menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
+  <div class="mobile-menu" id="mobile-menu" hidden>
+    {items.map((it) => (
+      <a
+        href={localizedPath(locale, it.key)}
+        class={`mobile-menu-link ${it.key === pageKey ? 'active' : ''}`}
+      >{it.label}</a>
+    ))}
+    <a href={localizedPath(locale, 'booking')} class="btn btn-primary mobile-menu-reserve">{t.navBook}</a>
+  </div>
 </nav>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('.nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  if (toggle && menu) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !menu.hasAttribute('hidden');
+      if (isOpen) {
+        menu.setAttribute('hidden', '');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.classList.remove('open');
+      } else {
+        menu.removeAttribute('hidden');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.classList.add('open');
+      }
+    });
+  }
+</script>

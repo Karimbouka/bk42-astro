@@ -2,7 +2,7 @@ import { defineConfig } from 'astro/config';
 import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
-  site: 'https://bk42.ma',
+  site: 'https://bk42auto.com',
   trailingSlash: 'never',
   i18n: {
     defaultLocale: 'fr',
