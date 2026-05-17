@@ -3,7 +3,7 @@ import sitemap from '@astrojs/sitemap';
 
 export default defineConfig({
   site: 'https://bk42auto.com',
-  trailingSlash: 'never',
+  trailingSlash: 'always',
   i18n: {
     defaultLocale: 'fr',
     locales: ['fr', 'en'],
@@ -12,7 +12,7 @@ export default defineConfig({
     },
   },
   redirects: {
-    '/': '/fr',
+    '/': '/fr/',
   },
   integrations: [
     sitemap({
