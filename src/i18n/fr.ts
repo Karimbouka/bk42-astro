@@ -108,7 +108,7 @@ export const fr: Translation = {
   aboutEyebrow: 'À propos',
   aboutHeadline: 'Une flotte. Un pays. Un service.',
   aboutSub:
-    'BK42 est une société marocaine de location de voitures, basée à Marrakech. Nous opérons une flotte de sept véhicules 2026, tous neufs, renouvelée chaque année.',
+    'BK42 est une société marocaine de location de voitures, basée à Larache, Maroc. Nous opérons une flotte de sept véhicules 2026, tous neufs, renouvelée chaque année.',
   aboutApproachEyebrow: 'Notre approche',
   aboutApproachTitle: 'Simple, direct, de confiance.',
   aboutApproachBody:

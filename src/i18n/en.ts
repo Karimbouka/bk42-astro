@@ -111,7 +111,7 @@ export const en: Translation = {
   aboutEyebrow: 'About',
   aboutHeadline: 'One Fleet. One Country. One Service.',
   aboutSub:
-    'BK42 is a Moroccan car rental company based in Marrakech. We operate a fleet of seven brand-new 2026 vehicles, renewed every year.',
+    'BK42 is a Moroccan car rental company based in Larache, Morocco. We operate a fleet of seven brand-new 2026 vehicles, renewed every year.',
   aboutApproachEyebrow: 'Our Approach',
   aboutApproachTitle: 'Simple, direct, trustworthy.',
   aboutApproachBody:
