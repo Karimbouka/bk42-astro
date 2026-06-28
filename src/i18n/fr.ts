@@ -239,12 +239,12 @@ export const fr: Translation = {
 
   seo: {
     home: {
-      title: 'BK42 — Location de voitures au Maroc | Larache, Tanger, Rabat',
+      title: 'BK42 | Location de voitures au Maroc | Larache, Tanger, Rabat',
       description:
         "Location de voitures au Maroc. Flotte 2026 entièrement neuve, livraison à l'aéroport, assurance tous risques. Larache, Tanger, Rabat, Casablanca.",
     },
     fleet: {
-      title: 'Notre flotte 2026 — Peugeot 208, Dacia Logan, Stepway | BK42',
+      title: 'Notre flotte 2026 | Peugeot 208, Dacia Logan, Stepway | BK42',
       description:
         'Sept véhicules neufs 2026 disponibles à la location au Maroc. Peugeot 208, Dacia Logan, Streetway, Stepway. À partir de 250 MAD/jour.',
     },
@@ -254,7 +254,7 @@ export const fr: Translation = {
         'Réservez votre voiture au Maroc en quelques minutes. Sans acompte, annulation gratuite jusqu’à 48h avant. Livraison incluse à Tanger, Rabat, Casablanca.',
     },
     about: {
-      title: 'À propos de BK42 — Location de voitures au Maroc',
+      title: 'À propos de BK42 | Location de voitures au Maroc',
       description:
         'BK42, société marocaine de location de voitures basée à Larache. Flotte de sept véhicules 2026, renouvelée chaque année. Service direct, sans intermédiaire.',
     },

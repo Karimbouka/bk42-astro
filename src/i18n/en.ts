@@ -239,12 +239,12 @@ export const en: Translation = {
 
   seo: {
     home: {
-      title: 'BK42 — Car Rental in Morocco | Larache, Tangier, Rabat',
+      title: 'BK42 | Car Rental in Morocco | Larache, Tangier, Rabat',
       description:
         'Car rental in Morocco. Brand-new 2026 fleet, free airport delivery, comprehensive insurance. Larache, Tangier, Rabat, Casablanca.',
     },
     fleet: {
-      title: 'Our 2026 Fleet — Peugeot 208, Dacia Logan, Stepway | BK42',
+      title: 'Our 2026 Fleet | Peugeot 208, Dacia Logan, Stepway | BK42',
       description:
         'Seven brand-new 2026 vehicles available for rent in Morocco. Peugeot 208, Dacia Logan, Streetway, Stepway. From 250 MAD/day.',
     },
@@ -254,7 +254,7 @@ export const en: Translation = {
         'Book your car in Morocco in minutes. No deposit, free cancellation up to 48h before. Free delivery to Tangier, Rabat, Casablanca.',
     },
     about: {
-      title: 'About BK42 — Car Rental in Morocco',
+      title: 'About BK42 | Car Rental in Morocco',
       description:
         'BK42 is a Moroccan car rental company based in Larache. Fleet of seven brand-new 2026 vehicles, renewed every year. Direct service, no intermediary.',
     },

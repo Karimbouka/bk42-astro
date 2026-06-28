@@ -37,7 +37,7 @@ export const fleet: Car[] = [
     catKey: 'city',
     price: 300, seats: 5, gear, fuel: diesel,
     img: 'streetway-gris.webp',
-    alt: { fr: 'Dacia Streetway 2026 grise — location au Maroc', en: 'Dacia Streetway 2026 grey — rent in Morocco' },
+    alt: { fr: 'Dacia Streetway 2026 grise, location au Maroc', en: 'Dacia Streetway 2026 grey, rent in Morocco' },
   },
   {
     id: '208-noir',
@@ -48,7 +48,7 @@ export const fleet: Car[] = [
     catKey: 'city',
     price: 350, seats: 5, gear, fuel: diesel,
     img: 'peugeot-208-noir.jpg',
-    alt: { fr: 'Peugeot 208 2026 noire — location au Maroc', en: 'Peugeot 208 2026 black — rent in Morocco' },
+    alt: { fr: 'Peugeot 208 2026 noire, location au Maroc', en: 'Peugeot 208 2026 black, rent in Morocco' },
   },
   {
     id: 'logan-noir',
@@ -59,7 +59,7 @@ export const fleet: Car[] = [
     catKey: 'eco',
     price: 250, seats: 5, gear, fuel: diesel,
     img: 'logan-noir.jpg',
-    alt: { fr: 'Dacia Logan 2026 noire — location au Maroc', en: 'Dacia Logan 2026 black — rent in Morocco' },
+    alt: { fr: 'Dacia Logan 2026 noire, location au Maroc', en: 'Dacia Logan 2026 black, rent in Morocco' },
   },
   {
     id: 'stepway-noir',
@@ -70,7 +70,7 @@ export const fleet: Car[] = [
     catKey: 'suv',
     price: 350, seats: 5, gear, fuel: diesel,
     img: 'stepway-noir.jpg',
-    alt: { fr: 'Dacia Stepway 2026 noire — SUV compact au Maroc', en: 'Dacia Stepway 2026 black — compact SUV in Morocco' },
+    alt: { fr: 'Dacia Stepway 2026 noire, SUV compact au Maroc', en: 'Dacia Stepway 2026 black, compact SUV in Morocco' },
   },
   {
     id: '208-blanc',
@@ -81,7 +81,7 @@ export const fleet: Car[] = [
     catKey: 'city',
     price: 350, seats: 5, gear, fuel: diesel,
     img: 'peugeot-208-blanc.webp',
-    alt: { fr: 'Peugeot 208 2026 blanche — location au Maroc', en: 'Peugeot 208 2026 white — rent in Morocco' },
+    alt: { fr: 'Peugeot 208 2026 blanche, location au Maroc', en: 'Peugeot 208 2026 white, rent in Morocco' },
   },
   {
     id: '208-gris',
@@ -92,7 +92,7 @@ export const fleet: Car[] = [
     catKey: 'city',
     price: 350, seats: 5, gear, fuel: diesel,
     img: 'peugeot-208-gris.jpg',
-    alt: { fr: 'Peugeot 208 2026 grise — location au Maroc', en: 'Peugeot 208 2026 grey — rent in Morocco' },
+    alt: { fr: 'Peugeot 208 2026 grise, location au Maroc', en: 'Peugeot 208 2026 grey, rent in Morocco' },
   },
   {
     id: 'streetway-gris-2',
@@ -103,7 +103,7 @@ export const fleet: Car[] = [
     catKey: 'city',
     price: 300, seats: 5, gear, fuel: diesel,
     img: 'streetway-gris.webp',
-    alt: { fr: 'Dacia Streetway 2026 grise — location au Maroc', en: 'Dacia Streetway 2026 grey — rent in Morocco' },
+    alt: { fr: 'Dacia Streetway 2026 grise, location au Maroc', en: 'Dacia Streetway 2026 grey, rent in Morocco' },
   },
 ];
 
