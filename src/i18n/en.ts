@@ -23,7 +23,7 @@ export const en: Translation = {
 
   heroTagline: 'Car Rental, Morocco',
   heroHeadline: 'The Keys to Morocco.',
-  heroSub: 'Premium car rental. Delivered to you.',
+  heroSub: 'Car rental in Morocco. Delivered to you.',
   heroBookNow: 'Book Now',
   heroViewFleet: 'View Fleet',
   heroScroll: 'Scroll',
@@ -57,7 +57,7 @@ export const en: Translation = {
     },
   ],
 
-  footerTagline: 'Premium car rental in Morocco. Larache, Tangier, Rabat, Casablanca.',
+  footerTagline: 'Car rental in Morocco. Larache, Tangier, Rabat, Casablanca.',
   footerCompany: 'Company',
   footerAbout: 'About',
   footerFleet: 'Fleet',
@@ -239,9 +239,9 @@ export const en: Translation = {
 
   seo: {
     home: {
-      title: 'BK42 — Premium Car Rental in Morocco | Larache, Tangier, Rabat',
+      title: 'BK42 — Car Rental in Morocco | Larache, Tangier, Rabat',
       description:
-        'Premium car rental in Morocco. Brand-new 2026 fleet, free airport delivery, comprehensive insurance. Larache, Tangier, Rabat, Casablanca.',
+        'Car rental in Morocco. Brand-new 2026 fleet, free airport delivery, comprehensive insurance. Larache, Tangier, Rabat, Casablanca.',
     },
     fleet: {
       title: 'Our 2026 Fleet — Peugeot 208, Dacia Logan, Stepway | BK42',
@@ -254,7 +254,7 @@ export const en: Translation = {
         'Book your car in Morocco in minutes. No deposit, free cancellation up to 48h before. Free delivery to Tangier, Rabat, Casablanca.',
     },
     about: {
-      title: 'About BK42 — Premium Car Rental in Morocco',
+      title: 'About BK42 — Car Rental in Morocco',
       description:
         'BK42 is a Moroccan car rental company based in Larache. Fleet of seven brand-new 2026 vehicles, renewed every year. Direct service, no intermediary.',
     },

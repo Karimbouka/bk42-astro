@@ -23,7 +23,7 @@ export const fr: Translation = {
 
   heroTagline: 'Location de voitures, Maroc',
   heroHeadline: 'Les clés du Maroc.',
-  heroSub: 'Location de voitures haut de gamme. Livraison où vous êtes.',
+  heroSub: 'Location de voitures au Maroc. Livraison où vous êtes.',
   heroBookNow: 'Réservez maintenant',
   heroViewFleet: 'Voir la flotte',
   heroScroll: 'Défilez',
@@ -53,7 +53,7 @@ export const fr: Translation = {
     },
   ],
 
-  footerTagline: 'Location de voitures premium au Maroc. Larache, Tanger, Rabat, Casablanca.',
+  footerTagline: 'Location de voitures au Maroc. Larache, Tanger, Rabat, Casablanca.',
   footerCompany: 'Société',
   footerAbout: 'À propos',
   footerFleet: 'Flotte',
@@ -239,9 +239,9 @@ export const fr: Translation = {
 
   seo: {
     home: {
-      title: 'BK42 — Location de voitures de luxe au Maroc | Larache, Tanger, Rabat',
+      title: 'BK42 — Location de voitures au Maroc | Larache, Tanger, Rabat',
       description:
-        "Location de voitures premium au Maroc. Flotte 2026 entièrement neuve, livraison à l'aéroport, assurance tous risques. Larache, Tanger, Rabat, Casablanca.",
+        "Location de voitures au Maroc. Flotte 2026 entièrement neuve, livraison à l'aéroport, assurance tous risques. Larache, Tanger, Rabat, Casablanca.",
     },
     fleet: {
       title: 'Notre flotte 2026 — Peugeot 208, Dacia Logan, Stepway | BK42',
@@ -254,7 +254,7 @@ export const fr: Translation = {
         'Réservez votre voiture au Maroc en quelques minutes. Sans acompte, annulation gratuite jusqu’à 48h avant. Livraison incluse à Tanger, Rabat, Casablanca.',
     },
     about: {
-      title: 'À propos de BK42 — Location de voitures haut de gamme au Maroc',
+      title: 'À propos de BK42 — Location de voitures au Maroc',
       description:
         'BK42, société marocaine de location de voitures basée à Larache. Flotte de sept véhicules 2026, renouvelée chaque année. Service direct, sans intermédiaire.',
     },
