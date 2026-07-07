@@ -70,6 +70,12 @@ export interface Translation {
   homeBookCta: string;
   homeLuckyNum: string;
 
+  homeMapEyebrow: string;
+  homeMapHeadline: string;
+  homeMapBody: string;
+  homeReviewsTitle: string;
+  homeReviewsOnGoogle: string;
+
   // Fleet
   fleetEyebrow: string;
   fleetHeadline: string;

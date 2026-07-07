@@ -73,6 +73,12 @@ export const fr: Translation = {
   homeBookCta: 'Réservez votre voiture',
   homeLuckyNum: 'Notre nombre fétiche',
 
+  homeMapEyebrow: 'Nous trouver',
+  homeMapHeadline: 'Où nous sommes.',
+  homeMapBody: 'Passez nous voir ou contactez-nous. Nous livrons partout au Maroc.',
+  homeReviewsTitle: 'Ce que disent nos clients',
+  homeReviewsOnGoogle: 'Voir tous les avis sur Google →',
+
   fleetEyebrow: 'Flotte',
   fleetHeadline: 'Choisissez votre voiture.',
   fleetSub:

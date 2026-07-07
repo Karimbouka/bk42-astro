@@ -77,6 +77,12 @@ export const en: Translation = {
   homeBookCta: 'Book Your Car',
   homeLuckyNum: 'Our lucky number',
 
+  homeMapEyebrow: 'Find Us',
+  homeMapHeadline: 'Where we are.',
+  homeMapBody: 'Come see us or get in touch. We deliver anywhere in Morocco.',
+  homeReviewsTitle: 'What our customers say',
+  homeReviewsOnGoogle: 'See all reviews on Google →',
+
   fleetEyebrow: 'Fleet',
   fleetHeadline: 'Choose your car.',
   fleetSub: 'Seven 2026 vehicles, all brand new, ready for the road. Airport delivery included.',

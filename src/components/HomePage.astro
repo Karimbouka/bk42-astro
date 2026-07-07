@@ -2,6 +2,7 @@
 import Hero from './Hero.astro';
 import FeatureRow from './FeatureRow.astro';
 import FleetCard from './FleetCard.astro';
+import LocationReviews from './LocationReviews.astro';
 import { translations, localizedPath } from '../i18n';
 import { fleet } from '../data/fleet';
 import type { Locale } from '../i18n';
@@ -12,6 +13,8 @@ const t = translations[locale];
 const featured = fleet.slice(0, 3);
 ---
 <Hero locale={locale} />
+
+<LocationReviews locale={locale} />
 
 <section class="section section-light">
   <div class="container">

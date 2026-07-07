@@ -1,0 +1,146 @@
+---
+import { translations } from '../i18n';
+import { business, reviews } from '../data/reviews';
+import type { Locale } from '../i18n';
+
+export interface Props { locale: Locale }
+const { locale } = Astro.props;
+const t = translations[locale];
+
+const hasReviews = reviews.length > 0;
+const stars = (n: number) => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
+---
+
+<section class="section section-light">
+  <div class="container">
+    <p class="eyebrow">{t.homeMapEyebrow}</p>
+    <h2 class="h2" style="margin-bottom:16px;">{t.homeMapHeadline}</h2>
+    <p style="max-width:560px; color:var(--fg-2); margin-bottom:40px;">{t.homeMapBody}</p>
+
+    <div class="map-wrap">
+      <iframe
+        src={business.mapEmbedSrc}
+        title={business.name}
+        width="100%"
+        height="100%"
+        style="border:0;"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+      ></iframe>
+    </div>
+
+    {hasReviews && (
+      <div class="reviews">
+        <div class="reviews-head">
+          <h3 class="reviews-title">{t.homeReviewsTitle}</h3>
+          <div class="reviews-summary">
+            <span class="reviews-stars">{stars(Math.round(business.rating))}</span>
+            <span class="reviews-score">{business.rating.toFixed(1)}</span>
+            {business.reviewCount > 0 && (
+              <span class="reviews-count">({business.reviewCount})</span>
+            )}
+          </div>
+        </div>
+
+        <div class="reviews-grid">
+          {reviews.map((r) => (
+            <figure class="review-card">
+              <div class="review-stars">{stars(r.rating)}</div>
+              <blockquote class="review-text">{r.text}</blockquote>
+              <figcaption class="review-meta">
+                <span class="review-author">{r.author}</span>
+                <span class="review-date">{r.date}</span>
+              </figcaption>
+            </figure>
+          ))}
+        </div>
+
+        <a class="reviews-link" href={business.googleReviewsUrl} target="_blank" rel="noopener noreferrer">
+          {t.homeReviewsOnGoogle}
+        </a>
+      </div>
+    )}
+  </div>
+</section>
+
+<style>
+  .map-wrap {
+    width: 100%;
+    height: 440px;
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--bk-ink-100);
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.06);
+  }
+  .map-wrap iframe { display: block; }
+
+  .reviews { margin-top: 56px; }
+  .reviews-head {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+  .reviews-title {
+    font-family: var(--font-sans);
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--bk-ink-900);
+    margin: 0;
+  }
+  .reviews-summary { display: flex; align-items: center; gap: 8px; }
+  .reviews-stars { color: var(--bk-gold-400); letter-spacing: 2px; font-size: 18px; }
+  .reviews-score { font-weight: 700; color: var(--bk-ink-900); }
+  .reviews-count { color: var(--fg-3); font-size: 14px; }
+
+  .reviews-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .review-card {
+    margin: 0;
+    padding: 24px;
+    background: var(--bk-white);
+    border: 1px solid var(--bk-ink-100);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+  }
+  .review-stars { color: var(--bk-gold-400); letter-spacing: 2px; font-size: 15px; }
+  .review-text {
+    margin: 0;
+    color: var(--fg-2);
+    font-size: 15px;
+    line-height: 1.6;
+    flex: 1;
+  }
+  .review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    border-top: 1px solid var(--bk-ink-50);
+    padding-top: 12px;
+  }
+  .review-author { font-weight: 600; color: var(--bk-ink-900); font-size: 14px; }
+  .review-date { color: var(--fg-3); font-size: 13px; }
+
+  .reviews-link {
+    display: inline-block;
+    margin-top: 28px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bk-gold-600);
+  }
+
+  @media (max-width: 640px) {
+    .map-wrap { height: 320px; }
+  }
+</style>
