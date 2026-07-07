@@ -18,8 +18,15 @@ export const business = {
   reviewCount: 0,
   /** Link customers click to read/write reviews on Google. */
   googleReviewsUrl: 'https://share.google/onqMqSvXDVK9l6w2W',
+  /** Postal address for the NAP block (Name, Address, Phone). */
+  address: 'Lot ennour N56, Larache, Maroc',
+  /** Phone in display and tel: forms. */
+  phoneDisplay: '+212 7 06 40 18 27',
+  phoneTel: '+212706401827',
+  whatsappUrl: 'https://wa.me/212706401827',
+  email: 'bk42rentcars@gmail.com',
   /** Keyless Google Maps embed — no API key or billing required. */
-  mapEmbedSrc: 'https://maps.google.com/maps?q=BK42%20Auto%20Location&output=embed',
+  mapEmbedSrc: 'https://maps.google.com/maps?q=BK42%20Auto%20Location%2C%20Larache&output=embed',
 };
 
 /**

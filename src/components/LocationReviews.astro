@@ -11,38 +11,75 @@ const hasReviews = reviews.length > 0;
 const stars = (n: number) => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.slice(0, 5 - n);
 ---
 
+<!-- NAP + map -->
 <section class="section section-light">
   <div class="container">
     <p class="eyebrow">{t.homeMapEyebrow}</p>
-    <h2 class="h2" style="margin-bottom:16px;">{t.homeMapHeadline}</h2>
-    <p style="max-width:560px; color:var(--fg-2); margin-bottom:40px;">{t.homeMapBody}</p>
+    <h2 class="h2" style="margin-bottom:40px;">{t.homeMapHeadline}</h2>
 
-    <div class="map-wrap">
-      <iframe
-        src={business.mapEmbedSrc}
-        title={business.name}
-        width="100%"
-        height="100%"
-        style="border:0;"
-        loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade"
-      ></iframe>
-    </div>
+    <div class="nap-grid">
+      <div class="map-wrap">
+        <iframe
+          src={business.mapEmbedSrc}
+          title={business.name}
+          width="100%"
+          height="100%"
+          style="border:0;"
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade"
+        ></iframe>
+      </div>
 
-    {hasReviews && (
-      <div class="reviews">
-        <div class="reviews-head">
-          <h3 class="reviews-title">{t.homeReviewsTitle}</h3>
-          <div class="reviews-summary">
-            <span class="reviews-stars">{stars(Math.round(business.rating))}</span>
-            <span class="reviews-score">{business.rating.toFixed(1)}</span>
-            {business.reviewCount > 0 && (
-              <span class="reviews-count">({business.reviewCount})</span>
-            )}
-          </div>
+      <address class="nap-card">
+        <p class="nap-name">{business.name}</p>
+
+        <div class="nap-row">
+          <span class="nap-label">{t.contactOffice}</span>
+          <span class="nap-value">{business.address}</span>
         </div>
 
-        <div class="reviews-grid">
+        <div class="nap-row">
+          <span class="nap-label">{t.contactPhoneLabel}</span>
+          <a class="nap-value nap-link" href={`tel:${business.phoneTel}`}>{business.phoneDisplay}</a>
+        </div>
+
+        <div class="nap-row">
+          <span class="nap-label">{t.contactWhatsApp}</span>
+          <a class="nap-value nap-link" href={business.whatsappUrl} target="_blank" rel="noopener noreferrer">{business.phoneDisplay}</a>
+        </div>
+
+        <div class="nap-row">
+          <span class="nap-label">{t.contactEmail}</span>
+          <a class="nap-value nap-link" href={`mailto:${business.email}`}>{business.email}</a>
+        </div>
+
+        <a class="nap-directions" href={business.googleReviewsUrl} target="_blank" rel="noopener noreferrer">
+          {t.homeReviewsOnGoogle}
+        </a>
+      </address>
+    </div>
+  </div>
+</section>
+
+<!-- Reviews carousel -->
+{hasReviews && (
+  <section class="section section-dark reviews-section">
+    <div class="container">
+      <div class="reviews-head">
+        <div>
+          <p class="eyebrow dark">Google</p>
+          <h2 class="h2" style="color:var(--bk-white);">{t.homeReviewsTitle}</h2>
+        </div>
+        <div class="reviews-summary">
+          <span class="reviews-stars">{stars(Math.round(business.rating))}</span>
+          <span class="reviews-score">{business.rating.toFixed(1)}</span>
+          {business.reviewCount > 0 && <span class="reviews-count">({business.reviewCount})</span>}
+        </div>
+      </div>
+
+      <div class="carousel" data-carousel>
+        <button class="carousel-btn carousel-prev" type="button" aria-label="Previous" data-prev>‹</button>
+        <div class="carousel-track" data-track>
           {reviews.map((r) => (
             <figure class="review-card">
               <div class="review-stars">{stars(r.rating)}</div>
@@ -54,18 +91,25 @@ const stars = (n: number) => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.s
             </figure>
           ))}
         </div>
-
-        <a class="reviews-link" href={business.googleReviewsUrl} target="_blank" rel="noopener noreferrer">
-          {t.homeReviewsOnGoogle}
-        </a>
+        <button class="carousel-btn carousel-next" type="button" aria-label="Next" data-next>›</button>
       </div>
-    )}
-  </div>
-</section>
+
+      <a class="reviews-link" href={business.googleReviewsUrl} target="_blank" rel="noopener noreferrer">
+        {t.homeReviewsOnGoogle}
+      </a>
+    </div>
+  </section>
+)}
 
 <style>
+  /* NAP + map */
+  .nap-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 28px;
+    align-items: stretch;
+  }
   .map-wrap {
-    width: 100%;
     height: 440px;
     border-radius: 8px;
     overflow: hidden;
@@ -74,64 +118,37 @@ const stars = (n: number) => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.s
   }
   .map-wrap iframe { display: block; }
 
-  .reviews { margin-top: 56px; }
-  .reviews-head {
-    display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    flex-wrap: wrap;
-    gap: 12px;
-    margin-bottom: 28px;
-  }
-  .reviews-title {
-    font-family: var(--font-sans);
-    font-size: 22px;
-    font-weight: 700;
-    color: var(--bk-ink-900);
-    margin: 0;
-  }
-  .reviews-summary { display: flex; align-items: center; gap: 8px; }
-  .reviews-stars { color: var(--bk-gold-400); letter-spacing: 2px; font-size: 18px; }
-  .reviews-score { font-weight: 700; color: var(--bk-ink-900); }
-  .reviews-count { color: var(--fg-3); font-size: 14px; }
-
-  .reviews-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 20px;
-  }
-  .review-card {
-    margin: 0;
-    padding: 24px;
+  .nap-card {
+    font-style: normal;
     background: var(--bk-white);
     border: 1px solid var(--bk-ink-100);
     border-radius: 8px;
+    padding: 32px;
     display: flex;
     flex-direction: column;
-    gap: 14px;
+    gap: 20px;
   }
-  .review-stars { color: var(--bk-gold-400); letter-spacing: 2px; font-size: 15px; }
-  .review-text {
+  .nap-name {
+    font-family: var(--font-sans);
+    font-weight: 700;
+    font-size: 20px;
+    color: var(--bk-ink-900);
     margin: 0;
-    color: var(--fg-2);
-    font-size: 15px;
-    line-height: 1.6;
-    flex: 1;
   }
-  .review-meta {
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-    gap: 12px;
-    border-top: 1px solid var(--bk-ink-50);
-    padding-top: 12px;
+  .nap-row { display: flex; flex-direction: column; gap: 4px; }
+  .nap-label {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bk-gold-600);
   }
-  .review-author { font-weight: 600; color: var(--bk-ink-900); font-size: 14px; }
-  .review-date { color: var(--fg-3); font-size: 13px; }
-
-  .reviews-link {
-    display: inline-block;
-    margin-top: 28px;
+  .nap-value { color: var(--fg-2); font-size: 15px; }
+  .nap-link { color: var(--bk-ink-900); text-decoration: none; }
+  .nap-link:hover { color: var(--bk-gold-600); }
+  .nap-directions {
+    margin-top: auto;
     font-family: var(--font-sans);
     font-size: 13px;
     font-weight: 600;
@@ -140,7 +157,117 @@ const stars = (n: number) => '★★★★★'.slice(0, n) + '☆☆☆☆☆'.s
     color: var(--bk-gold-600);
   }
 
-  @media (max-width: 640px) {
+  /* Reviews carousel */
+  .reviews-head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 36px;
+  }
+  .reviews-summary { display: flex; align-items: center; gap: 8px; }
+  .reviews-stars { color: var(--bk-gold-400); letter-spacing: 2px; font-size: 20px; }
+  .reviews-score { font-weight: 700; color: var(--bk-white); font-size: 18px; }
+  .reviews-count { color: var(--bk-ink-300); font-size: 14px; }
+
+  .carousel { position: relative; }
+  .carousel-track {
+    display: flex;
+    gap: 20px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding-bottom: 8px;
+    scrollbar-width: none;
+  }
+  .carousel-track::-webkit-scrollbar { display: none; }
+
+  .review-card {
+    flex: 0 0 340px;
+    max-width: 340px;
+    scroll-snap-align: start;
+    margin: 0;
+    padding: 28px;
+    background: var(--bk-ink-800);
+    border: 1px solid var(--bk-ink-700);
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+  .review-stars { color: var(--bk-gold-400); letter-spacing: 2px; font-size: 16px; }
+  .review-text {
+    margin: 0;
+    color: var(--bk-ink-200);
+    font-size: 15px;
+    line-height: 1.65;
+    flex: 1;
+  }
+  .review-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    border-top: 1px solid var(--bk-ink-700);
+    padding-top: 14px;
+  }
+  .review-author { font-weight: 600; color: var(--bk-white); font-size: 14px; }
+  .review-date { color: var(--bk-ink-400); font-size: 13px; }
+
+  .carousel-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    border: 1px solid var(--bk-ink-600);
+    background: var(--bk-ink-900);
+    color: var(--bk-white);
+    font-size: 24px;
+    line-height: 1;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .carousel-btn:hover { background: var(--bk-gold-600); border-color: var(--bk-gold-600); }
+  .carousel-prev { left: -16px; }
+  .carousel-next { right: -16px; }
+
+  .reviews-link {
+    display: inline-block;
+    margin-top: 32px;
+    font-family: var(--font-sans);
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--bk-gold-400);
+  }
+
+  @media (max-width: 860px) {
+    .nap-grid { grid-template-columns: 1fr; }
     .map-wrap { height: 320px; }
+    .carousel-prev { left: 4px; }
+    .carousel-next { right: 4px; }
   }
 </style>
+
+<script>
+  document.querySelectorAll('[data-carousel]').forEach((carousel) => {
+    const track = carousel.querySelector('[data-track]') as HTMLElement | null;
+    const prev = carousel.querySelector('[data-prev]');
+    const next = carousel.querySelector('[data-next]');
+    if (!track) return;
+    const step = () => {
+      const card = track.querySelector('.review-card') as HTMLElement | null;
+      return card ? card.offsetWidth + 20 : 360;
+    };
+    prev?.addEventListener('click', () => track.scrollBy({ left: -step(), behavior: 'smooth' }));
+    next?.addEventListener('click', () => track.scrollBy({ left: step(), behavior: 'smooth' }));
+  });
+</script>
