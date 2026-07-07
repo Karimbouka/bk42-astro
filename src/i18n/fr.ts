@@ -251,7 +251,7 @@ export const fr: Translation = {
     booking: {
       title: 'Réservation en ligne | BK42 Location de voitures Maroc',
       description:
-        ‘Réservez votre voiture au Maroc en quelques minutes. Sans acompte, annulation gratuite jusqu’à 48h avant. Livraison incluse.’,
+        'Réservez votre voiture au Maroc en quelques minutes. Sans acompte, annulation gratuite jusqu’à 48h avant. Livraison incluse.',
     },
     about: {
       title: 'À propos de BK42 | Location de voitures au Maroc',
