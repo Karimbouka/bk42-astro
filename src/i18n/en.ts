@@ -239,9 +239,9 @@ export const en: Translation = {
 
   seo: {
     home: {
-      title: 'BK42 | Car Rental in Morocco | Larache, Tangier, Rabat',
+      title: 'BK42 | Car Rental in Morocco',
       description:
-        'Car rental in Morocco. Brand-new 2026 fleet, free airport delivery, comprehensive insurance. Larache, Tangier, Rabat, Casablanca.',
+        'Car rental in Morocco. Brand-new 2026 fleet, free airport delivery, comprehensive insurance.',
     },
     fleet: {
       title: 'Our 2026 Fleet | Peugeot 208, Dacia Logan, Stepway | BK42',
@@ -251,17 +251,17 @@ export const en: Translation = {
     booking: {
       title: 'Online Booking | BK42 Morocco Car Rental',
       description:
-        'Book your car in Morocco in minutes. No deposit, free cancellation up to 48h before. Free delivery to Tangier, Rabat, Casablanca.',
+        'Book your car in Morocco in minutes. No deposit, free cancellation up to 48h before. Free delivery included.',
     },
     about: {
       title: 'About BK42 | Car Rental in Morocco',
       description:
-        'BK42 is a Moroccan car rental company based in Larache. Fleet of seven brand-new 2026 vehicles, renewed every year. Direct service, no intermediary.',
+        'BK42 is a Moroccan car rental company. Fleet of seven brand-new 2026 vehicles, renewed every year. Direct service, no intermediary.',
     },
     contact: {
       title: 'Contact BK42 | Phone, WhatsApp, Email',
       description:
-        'Contact us: +212 7 06 40 18 27, bk42rentcars@gmail.com. Main office Lot ennour N56, Larache. Tangier-Ibn Battouta Airport. Reply within 2h.',
+        'Contact us: +212 7 06 40 18 27, bk42rentcars@gmail.com. Main office Lot ennour N56. Reply within 2h.',
     },
     conditions: {
       title: 'Rental Terms | BK42',
